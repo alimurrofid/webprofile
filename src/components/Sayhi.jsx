@@ -14,18 +14,13 @@ export const Sayhi = () => {
             <p className="text-white leading-loose tracking-wider text-justify">
               Although I'm not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I'll try my best to get back to you!
             </p>
-            <a
-              href="mailto:alimurrofid77@gmail.com"
-              className="inline-block text-white bg-purple-800/30 px-5 py-1.5 rounded-full text-base border-purple-700 border-2 hover:bg-purple-800/70"
-            >
+            <a href="mailto:alimurrofid77@gmail.com" className="inline-block text-white bg-purple-800/30 px-5 py-1.5 rounded-full text-base border-purple-700 border-2 hover:bg-purple-800/70">
               Say Hello
             </a>
           </div>
         </div>
       </div>
-      <p className="text-white text-center mt-12 mb-4">
-        ©{new Date().getFullYear()} All Rights Reserved | Created with ❤️ Rofid
-      </p>
+      <p className="text-white text-center mt-12 mb-4">©{new Date().getFullYear()} All Rights Reserved | Created with ❤️ Rofid</p>
     </section>
   );
 };

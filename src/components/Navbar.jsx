@@ -18,7 +18,6 @@ export const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full z-50 p-4 flex justify-center">
       <div className="relative w-full max-w-sm md:w-auto md:max-w-none">
-        
         <motion.div
           animate={isMenuOpen ? "open" : "closed"}
           variants={{
@@ -44,14 +43,7 @@ export const Navbar = () => {
 
           <AnimatePresence>
             {isMenuOpen && (
-              <motion.div
-                key="menu"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2, delay: 0.1 }}
-                className="md:hidden"
-              >
+              <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2, delay: 0.1 }} className="md:hidden">
                 <div className="p-6 pt-4 text-center">
                   <MenuItems isMobile={true} closeMenu={closeMenu} />
                 </div>

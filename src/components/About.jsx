@@ -14,8 +14,13 @@ export const About = () => {
           <div className="w-full space-y-4 text-center md:w-7/12 md:text-left">
             <p className="text-4xl font-semibold leading-tight text-white md:text-5xl">About</p>
             <p className="text-lg font-normal leading-loose text-justify text-white">I am an Informatics Student at the State Polytechnic of Malang, where creativity, innovation and adaptability are my characteristics.</p>
-            <p className="text-lg font-normal leading-loose text-justify text-white">I have a special interest in programming, especially web development, and aspire to become a competent full-stack web developer. With over a year of experience, I am determined to create engaging and functional user experiences.</p>
-            <p className="text-lg font-normal leading-loose text-justify text-white">Ready to face new challenges and continue to develop myself in web development, I am always ready to expand my knowledge and skills in this dynamic world.</p>
+            <p className="text-lg font-normal leading-loose text-justify text-white">
+              I have a special interest in programming, especially web development, and aspire to become a competent full-stack web developer. With over a year of experience, I am determined to create engaging and functional user
+              experiences.
+            </p>
+            <p className="text-lg font-normal leading-loose text-justify text-white">
+              Ready to face new challenges and continue to develop myself in web development, I am always ready to expand my knowledge and skills in this dynamic world.
+            </p>
           </div>
         </div>
       </div>

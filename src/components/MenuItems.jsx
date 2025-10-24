@@ -5,12 +5,12 @@ export const MenuItems = ({ isMobile, closeMenu }) => {
 
   const handleLinkClick = (e, hash) => {
     e.preventDefault();
-    
+
     closeMenu();
 
     setTimeout(() => {
       const element = document.querySelector(hash);
-      
+
       if (element) {
         element.scrollIntoView();
       }
@@ -19,11 +19,31 @@ export const MenuItems = ({ isMobile, closeMenu }) => {
 
   return (
     <ul className={isMobile ? mobileClasses : desktopClasses}>
-      <li><a href="#home" className={baseClasses} onClick={(e) => handleLinkClick(e, "#home")}>Home</a></li>
-      <li><a href="#about" className={baseClasses} onClick={(e) => handleLinkClick(e, "#about")}>About</a></li>
-      <li><a href="#experience" className={baseClasses} onClick={(e) => handleLinkClick(e, "#experience")}>Experience</a></li>
-      <li><a href="#project" className={baseClasses} onClick={(e) => handleLinkClick(e, "#project")}>Project</a></li>
-      <li><a href="#achievement" className={baseClasses} onClick={(e) => handleLinkClick(e, "#achievement")}>Achievement</a></li>
+      <li>
+        <a href="#home" className={baseClasses} onClick={(e) => handleLinkClick(e, "#home")}>
+          Home
+        </a>
+      </li>
+      <li>
+        <a href="#about" className={baseClasses} onClick={(e) => handleLinkClick(e, "#about")}>
+          About
+        </a>
+      </li>
+      <li>
+        <a href="#experience" className={baseClasses} onClick={(e) => handleLinkClick(e, "#experience")}>
+          Experience
+        </a>
+      </li>
+      <li>
+        <a href="#project" className={baseClasses} onClick={(e) => handleLinkClick(e, "#project")}>
+          Project
+        </a>
+      </li>
+      <li>
+        <a href="#achievement" className={baseClasses} onClick={(e) => handleLinkClick(e, "#achievement")}>
+          Achievement
+        </a>
+      </li>
     </ul>
   );
 };

@@ -9,7 +9,7 @@ export const Achievement = () => {
   const achievementSectionRef = useRef(null);
 
   const showMoreAchievements = () => setVisibleAchievements(achievementData.length);
-  
+
   const showLessAchievements = () => {
     setVisibleAchievements(3);
     achievementSectionRef.current.scrollIntoView({ behavior: "smooth" });
@@ -33,9 +33,9 @@ export const Achievement = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 whileHover={{ scale: 1.05 }}
-                transition={{ 
+                transition={{
                   duration: 0.3,
-                  scale: { duration: 0.2 }
+                  scale: { duration: 0.2 },
                 }}
                 className="relative w-full h-56 overflow-hidden bg-card rounded-xl"
               >
@@ -57,13 +57,13 @@ export const Achievement = () => {
       </div>
       <div className="flex justify-center mt-12">
         {visibleAchievements < achievementData.length ? (
-            <button onClick={showMoreAchievements} className="px-6 py-2 text-base text-white border-2 border-purple-700 rounded-full bg-purple-800/50 hover:bg-purple-800/70">
-                See More
-            </button>
+          <button onClick={showMoreAchievements} className="px-6 py-2 text-base text-white border-2 border-purple-700 rounded-full bg-purple-800/50 hover:bg-purple-800/70">
+            See More
+          </button>
         ) : (
-            <button onClick={showLessAchievements} className="px-6 py-2 text-base text-white border-2 border-purple-700 rounded-full bg-purple-800/50 hover:bg-purple-800/70">
-                Show Less
-            </button>
+          <button onClick={showLessAchievements} className="px-6 py-2 text-base text-white border-2 border-purple-700 rounded-full bg-purple-800/50 hover:bg-purple-800/70">
+            Show Less
+          </button>
         )}
       </div>
     </section>

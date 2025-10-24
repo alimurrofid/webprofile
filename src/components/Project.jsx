@@ -8,15 +8,15 @@ const descriptionVariants = {
     y: 5,
     height: 0,
     marginTop: 0,
-    transition: { duration: 0.2 }
+    transition: { duration: 0.2 },
   },
   visible: {
     opacity: 1,
     y: 0,
     height: "auto",
     marginTop: "0.25rem",
-    transition: { duration: 0.2, delay: 0.1 }
-  }
+    transition: { duration: 0.2, delay: 0.1 },
+  },
 };
 
 export const Project = () => {
@@ -40,34 +40,21 @@ export const Project = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {projectData.slice(0, visibleProjects).map((project, index) => (
-              <motion.a
-                href={project.link}
-                key={index}
-                layout
-                initial="hidden"
-                animate="hidden"
-                whileHover="visible"
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="relative block" 
-              >
+              <motion.a href={project.link} key={index} layout initial="hidden" animate="hidden" whileHover="visible" exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="relative block">
                 <motion.div
                   className="w-full"
-                   variants={{
-                     hidden: { scale: 1 },
-                     visible: { scale: 1.05 }
-                   }}
-                   transition={{ scale: { duration: 0.2 } }}
-                 >
+                  variants={{
+                    hidden: { scale: 1 },
+                    visible: { scale: 1.05 },
+                  }}
+                  transition={{ scale: { duration: 0.2 } }}
+                >
                   <div className="w-full text-white">
                     <div className="object-cover overflow-hidden rounded-lg">
                       <img className="w-full h-auto" src={project.imgSrc} alt={project.title} />
                     </div>
                     <p className="pt-2 text-xl font-bold leading-relaxed">{project.title}</p>
-                    <motion.p
-                      variants={descriptionVariants}
-                      className="text-base font-normal text-gray-300"
-                    >
+                    <motion.p variants={descriptionVariants} className="text-base font-normal text-gray-300">
                       {project.description}
                     </motion.p>
                   </div>

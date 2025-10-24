@@ -23,10 +23,26 @@ export const Main = () => {
             </div>
             <div className="w-full md:w-auto mt-12 md:mt-0 md:pl-8">
               <ul className="flex flex-row md:flex-col items-center justify-center space-x-8 md:space-x-0 md:space-y-8">
-                <li><a className="hover:opacity-50 transition-opacity duration-250" href="https://github.com/alimurrofid" target="_blank" rel="noopener noreferrer"><img src={githubIcon} alt="github" /></a></li>
-                <li><a className="hover:opacity-50 transition-opacity duration-250" href="https://instagram.com/alimurrofid" target="_blank" rel="noopener noreferrer"><img src={instagramIcon} alt="instagram" /></a></li>
-                <li><a className="hover:opacity-50 transition-opacity duration-250" href="https://twitter.com/alimurrofid" target="_blank" rel="noopener noreferrer"><img src={twitterIcon} alt="twitter" /></a></li>
-                <li><a className="hover:opacity-50 transition-opacity duration-250" href="https://linkedin.com/in/muhammad-ali-murrofid-320a2b254" target="_blank" rel="noopener noreferrer"><img src={linkedinIcon} alt="linkedin" /></a></li>
+                <li>
+                  <a className="hover:opacity-50 transition-opacity duration-250" href="https://github.com/alimurrofid" target="_blank" rel="noopener noreferrer">
+                    <img src={githubIcon} alt="github" />
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:opacity-50 transition-opacity duration-250" href="https://instagram.com/alimurrofid" target="_blank" rel="noopener noreferrer">
+                    <img src={instagramIcon} alt="instagram" />
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:opacity-50 transition-opacity duration-250" href="https://twitter.com/alimurrofid" target="_blank" rel="noopener noreferrer">
+                    <img src={twitterIcon} alt="twitter" />
+                  </a>
+                </li>
+                <li>
+                  <a className="hover:opacity-50 transition-opacity duration-250" href="https://linkedin.com/in/muhammad-ali-murrofid-320a2b254" target="_blank" rel="noopener noreferrer">
+                    <img src={linkedinIcon} alt="linkedin" />
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

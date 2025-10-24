@@ -1,16 +1,42 @@
-# React + Vite
+# Web Profile 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ini adalah proyek portofolio/profil web pribadi yang dibangun menggunakan React, Vite, dan Tailwind CSS. Proyek ini menampilkan informasi tentang saya, pengalaman, proyek yang pernah dikerjakan, dan pencapaian.
 
-Currently, two official plugins are available:
+## Teknologi yang Digunakan
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Framework:** [React](https://reactjs.org/)
+* **Build Tool:** [Vite](https://vitejs.dev/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+    * [tailwind-scrollbar](https://github.com/adoxography/tailwind-scrollbar)
+    * [@tailwindcss/aspect-ratio](https://github.com/tailwindlabs/tailwindcss-aspect-ratio)
+* **Animasi:** [Framer Motion](https://www.framer.com/motion/)
+* **Linting:** [ESLint](https://eslint.org/)
 
-## React Compiler
+## 🏁 Memulai Proyek
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Untuk menjalankan proyek ini secara lokal:
 
-## Expanding the ESLint configuration
+1.  **Clone repository:**
+    ```bash
+    https://github.com/alimurrofid/webprofile.git
+    cd webprofile
+    ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2.  **Install dependensi:**
+    ```bash
+    npm install
+    ```
+
+3.  **Jalankan server development:**
+    ```bash
+    npm run dev
+    ```
+
+## 📜 Skrip Perintah
+
+Dalam direktori proyek, Anda dapat menjalankan:
+
+* `npm run dev`: Memulai server development Vite dengan *Hot Module Replacement* (HMR).
+* `npm run lint`: Menjalankan ESLint untuk memeriksa *error* dan *warning* pada kode.
+* `npm run build`: Mem-bundle aplikasi untuk produksi ke dalam folder `dist`.
+* `npm run preview`: Menjalankan server lokal untuk melihat hasil *build* produksi dari folder `dist`.
