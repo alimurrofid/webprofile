@@ -23,6 +23,11 @@ jobs:
           node-version: "22"
           cache: "npm"
 
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       - name: Deploy to VPS (Secure)
         env:
           USER: ${{ secrets.SERVER_USER }}
