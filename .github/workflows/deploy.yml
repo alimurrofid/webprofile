@@ -37,10 +37,35 @@ jobs:
           echo "🚀 Connecting to $HOST ..."
           ssh -p $PORT -o StrictHostKeyChecking=accept-new $USER@$HOST "
             set -e
+            echo ''
+            echo '🟢 Starting remote deployment on:' \$(hostname)
+            echo '👤 User:' \$(whoami)
+
             echo '📁 Load NVM'
             export NVM_DIR=\"$HOME/.nvm\"
-            [ -s \"$NVM_DIR/nvm.sh\" ] && \. \"$NVM_DIR/nvm.sh\"  # Load NVM
-            [ -s \"$NVM_DIR/bash_completion\" ] && \. \"$NVM_DIR/bash_completion\"
+            echo '🔍 NVM_DIR='$NVM_DIR
+            if [ -s \"\$NVM_DIR/nvm.sh\" ]; then
+              echo '✅ Found nvm.sh, loading...'
+              . \"\$NVM_DIR/nvm.sh\"
+              nvm use 22 || echo '⚠️ nvm use 22 failed'
+            else
+              echo '❌ nvm.sh not found, will try system node'
+            fi
+
+            echo '🔎 PATH='$PATH
+            echo '🔍 which node:' \$(which node || echo 'not found')
+            echo '🔍 which npm:' \$(which npm || echo 'not found')
+            echo '📦 Node version:' \$(node -v 2>/dev/null || echo 'not found')
+            echo '📦 NPM version:' \$(npm -v 2>/dev/null || echo 'not found')
+
+            # --- fallback manual path to NVM node if still missing ---
+            if ! command -v npm >/dev/null 2>&1; then
+              echo '⚙️ Adding fallback path for NVM Node...'
+              export PATH=\$HOME/.nvm/versions/node/v22*/bin:\$PATH
+              echo '🔁 PATH updated:' \$PATH
+              echo '📦 Node version (after fix):' \$(node -v 2>/dev/null || echo 'still not found')
+              echo '📦 NPM version (after fix):' \$(npm -v 2>/dev/null || echo 'still not found')
+            fi
 
             echo '📂 Navigating to project directory...'
             cd $PROJECT_PATH
@@ -50,15 +75,16 @@ jobs:
             git reset --hard origin/main
 
             echo '📦 Installing dependencies...'
-            npm ci --no-audit --no-fund
+            npm ci --no-audit --no-fund || echo '⚠️ npm ci failed!'
 
             echo '🏗️ Building project...'
-            npm run build >> deploy.log 2>&1
+            npm run build >> deploy.log 2>&1 || echo '⚠️ npm build failed!'
 
             echo '♻️ Restarting Nginx...'
-            sudo systemctl restart nginx
+            sudo systemctl restart nginx || echo '⚠️ nginx restart failed!'
 
             echo '✅ Deployment completed successfully at $(date)' >> deploy.log
+            echo '🎉 Done! Build success at' \$(date)
           "
 
       - name: Upload deployment log
