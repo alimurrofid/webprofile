@@ -1,0 +1,61 @@
+name: 🚀 Deploy React Webprofile to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to VPS
+        env:
+          USER: ${{ secrets.SERVER_USER }}
+          HOST: ${{ secrets.SERVER_HOST }}
+          PORT: ${{ secrets.SERVER_PORT || '22' }}
+          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
+        run: |
+          set -e
+
+          echo "🚀 Connecting to $HOST ..."
+          ssh -p $PORT -o StrictHostKeyChecking=accept-new $USER@$HOST "
+            set -e
+            echo '📂 Navigating to project directory...'
+            cd $PROJECT_PATH
+
+            echo '🔄 Fetching latest code...'
+            git fetch origin main
+            git reset --hard origin/main
+
+            echo '📦 Installing dependencies...'
+            npm ci --no-audit --no-fund
+
+            echo '🏗️ Building project...'
+            npm run build >> deploy.log 2>&1
+
+            echo '♻️ Restarting Nginx...'
+            sudo systemctl restart nginx
+
+            echo '✅ Deployment completed successfully at $(date)' >> deploy.log
+          "
+
+      - name: Upload deployment log
+        if: success()
+        run: echo "Deployment log stored on VPS at ${{ secrets.PROJECT_PATH }}/deploy.log"
