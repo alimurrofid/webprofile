@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
+    permissions:
+      contents: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -25,7 +28,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Deploy to VPS
+      - name: Deploy to VPS (Secure)
         env:
           USER: ${{ secrets.SERVER_USER }}
           HOST: ${{ secrets.SERVER_HOST }}
@@ -33,60 +36,44 @@ jobs:
           PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
         run: |
           set -e
+          echo "🚀 Starting secure deployment..."
 
-          echo "🚀 Connecting to $HOST ..."
           ssh -p $PORT -o StrictHostKeyChecking=accept-new $USER@$HOST "
             set -e
-            echo ''
-            echo '🟢 Starting remote deployment on:' \$(hostname)
-            echo '👤 User:' \$(whoami)
+            echo '🔒 Deployment started on remote server.'
 
-            echo '📁 Load NVM'
-            export NVM_DIR=\"$HOME/.nvm\"
-            echo '🔍 NVM_DIR='$NVM_DIR
-            if [ -s \"\$NVM_DIR/nvm.sh\" ]; then
-              echo '✅ Found nvm.sh, loading...'
-              . \"\$NVM_DIR/nvm.sh\"
-              nvm use 22 || echo '⚠️ nvm use 22 failed'
+            # Load NVM (silent)
+            export NVM_DIR=\"\$HOME/.nvm\"
+            [ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\" >/dev/null 2>&1 || true
+            nvm use 22 >/dev/null 2>&1 || true
+
+            # Verify Node & NPM
+            if command -v node >/dev/null 2>&1 && command -v npm >/dev/null 2>&1; then
+              echo '✅ Node & NPM detected.'
             else
-              echo '❌ nvm.sh not found, will try system node'
+              echo '❌ Node/NPM not found — aborting.'
+              exit 1
             fi
 
-            echo '🔎 PATH='$PATH
-            echo '🔍 which node:' \$(which node || echo 'not found')
-            echo '🔍 which npm:' \$(which npm || echo 'not found')
-            echo '📦 Node version:' \$(node -v 2>/dev/null || echo 'not found')
-            echo '📦 NPM version:' \$(npm -v 2>/dev/null || echo 'not found')
-
-            # --- fallback manual path to NVM node if still missing ---
-            if ! command -v npm >/dev/null 2>&1; then
-              echo '⚙️ Adding fallback path for NVM Node...'
-              export PATH=\$HOME/.nvm/versions/node/v22*/bin:\$PATH
-              echo '🔁 PATH updated:' \$PATH
-              echo '📦 Node version (after fix):' \$(node -v 2>/dev/null || echo 'still not found')
-              echo '📦 NPM version (after fix):' \$(npm -v 2>/dev/null || echo 'still not found')
-            fi
-
-            echo '📂 Navigating to project directory...'
+            # Navigate & sync repo
             cd $PROJECT_PATH
+            git fetch origin main --quiet
+            git reset --hard origin/main --quiet
 
-            echo '🔄 Fetching latest code...'
-            git fetch origin main
-            git reset --hard origin/main
-
+            # Install & build
             echo '📦 Installing dependencies...'
-            npm ci --no-audit --no-fund || echo '⚠️ npm ci failed!'
+            npm ci --no-audit --no-fund >/dev/null 2>&1
 
             echo '🏗️ Building project...'
-            npm run build >> deploy.log 2>&1 || echo '⚠️ npm build failed!'
+            npm run build >/dev/null 2>&1
 
-            echo '♻️ Restarting Nginx...'
-            sudo systemctl restart nginx || echo '⚠️ nginx restart failed!'
+            # Restart Nginx
+            echo '♻️ Restarting web service...'
+            sudo systemctl restart nginx || echo '⚠️ Restart failed (manual check needed).'
 
-            echo '✅ Deployment completed successfully at $(date)' >> deploy.log
-            echo '🎉 Done! Build success at' \$(date)
+            echo '✅ Deployment finished successfully at' \$(date)
           "
 
-      - name: Upload deployment log
+      - name: Confirm deployment
         if: success()
-        run: echo "Deployment log stored on VPS at ${{ secrets.PROJECT_PATH }}/deploy.log"
+        run: echo "✅ Deployment complete. Build and service restarted successfully."
