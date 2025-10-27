@@ -37,6 +37,11 @@ jobs:
           echo "🚀 Connecting to $HOST ..."
           ssh -p $PORT -o StrictHostKeyChecking=accept-new $USER@$HOST "
             set -e
+            echo '📁 Load NVM'
+            export NVM_DIR=\"$HOME/.nvm\"
+            [ -s \"$NVM_DIR/nvm.sh\" ] && \. \"$NVM_DIR/nvm.sh\"  # Load NVM
+            [ -s \"$NVM_DIR/bash_completion\" ] && \. \"$NVM_DIR/bash_completion\"
+
             echo '📂 Navigating to project directory...'
             cd $PROJECT_PATH
 
