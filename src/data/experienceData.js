@@ -8,10 +8,10 @@ export const experiences = [
     position: "Application Developer Partner",
     imgSrc: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=600&fit=crop",
     descriptions: [
-      "Mengembangkan dan memelihara modul Omnichannel (PHP/CodeIgniter), mengintegrasikan 6 platform komunikasi (Telephony, Email, iSense, iCare, XOS, iSupport).",
-      "Mengimplementasikan frontend interaktif (JavaScript, jQuery, AJAX) untuk meningkatkan fungsionalitas dan menunjang pengalaman pengguna",
-      "Mengoptimalkan query MySQL dan PostgreSQL untuk memastikan efisiensi sistem dalam menangani volume data besar.",
-      "Mengelola proses remote development dan deployment (WinSCP/SSH), menjaga stabilitas alur kerja tim dan keamanan server.",
+      "Developed and maintained an Omnichannel module (PHP/CodeIgniter), integrating 6 communication platforms (Telephony, Email, iSense, iCare, XOS, iSupport).",
+      "Implemented interactive frontend features (JavaScript, jQuery, AJAX) to enhance functionality and user experience.",
+      "Optimized MySQL and PostgreSQL queries to ensure system efficiency in handling large data volumes.",
+      "Managed remote development and deployment processes (WinSCP/SSH), maintaining team workflow stability and server security.",
     ],
   },
   {
@@ -19,9 +19,9 @@ export const experiences = [
     position: "Backend Web Developer",
     imgSrc: imgArm,
     descriptions: [
-      "Merancang dan mengembangkan lebih dari 50 endpoint RESTful API (Express.js) untuk sistem crowdfunding koperasi berbasis Hyperledger Besu.",
-      "Mengintegrasikan backend Express.js dengan smart contract Solidity (Hardhat), memfasilitasi alur transaksi yang aman dan konsisten.",
-      "Berkoordinasi dengan tim frontend dan blockchain engineer untuk memastikan konsistensi data antar-komponen sistem.",
+      "Designed and developed over 50 RESTful API endpoints (Express.js) for a cooperative crowdfunding system built on Hyperledger Besu.",
+      "Integrated the Express.js backend with Solidity smart contracts (Hardhat), facilitating a secure and consistent transaction flow.",
+      "Coordinated with frontend and blockchain engineers to ensure data consistency across system components.",
     ],
   },
   {
@@ -29,8 +29,8 @@ export const experiences = [
     position: "Fullstack Web Developer",
     imgSrc: imgNazma,
     descriptions: [
-      "Mengembangkan website pelatihan NaZMaLogy (Laravel + Tailwind CSS) dari awal hingga peluncuran untuk mendukung program digitalisasi UMKM.",
-      "Melakukan pengujian performa (Grafana K6) dan deployment VPS, memastikan sistem tervalidasi stabil menangani 400 virtual user secara simultan.",
+      "Developed the NaZMaLogy training website (Laravel + Tailwind CSS) from initial concept to launch, supporting an MSME digitalization program.",
+      "Conducted performance testing (Grafana K6) and managed VPS deployment, ensuring the system was validated to stably handle 400 concurrent virtual users.",
     ],
   },
   {
@@ -38,9 +38,9 @@ export const experiences = [
     position: "Staf Ahli Divisi Kominfo | Pengurus Muda Divisi Keagamaan",
     imgSrc: imgFmd,
     descriptions: [
-      "Berkomunikasi dan bekerja sama dengan tim untuk pencitraan organisasi. Berhasil meningkatkan pengikut media sosial hingga 15%.",
-      "Terpilih menjadi Kandidat Ketua Umum Formadiksi Polinema Periode 2023/2024.",
-      "Bertindak sebagai Koordinator Lapangan dan Ketua Pelaksana untuk 4+ program kerja dan agenda internal organisasi.",
+      "Collaborated with the team on organizational branding, successfully increasing social media followers by 15%.",
+      "Selected as a candidate for the Head of Formadiksi Polinema for the 2023/2024 period.",
+      "Acted as a Field Coordinator and Project Lead for 4+ organizational work programs and internal agendas.",
     ],
   },
 ];
