@@ -1,4 +1,4 @@
-import fotoProfile from "../assets/images/fotoprofile.png";
+import fotoProfile from "../assets/images/fotoprofile.webp";
 
 export const About = () => {
   return (

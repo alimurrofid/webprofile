@@ -1,36 +1,46 @@
+import imgArm from "../assets/images/experiences/monthlyreportcrowdequichain.webp";
+import imgNazma from "../assets/images/experiences/usertestingnazmalogy.webp";
+import imgFmd from "../assets/images/experiences/pilketum.webp";
+
 export const experiences = [
   {
-    title: "Formadiksi Polinema",
-    position: "Staff Ahli Divisi Kominfo",
+    title: "PT Intelix Global Crossing",
+    position: "Application Developer Partner",
     imgSrc: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=600&fit=crop",
     descriptions: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel ante at nibh mollis fermentum id sit amet libero",
-      "Nam laoreet, magna sed pretium dignissim, neque mauris egestas ante, eget varius erat quam ut mauris.",
-      "Donec vitae porttitor diam. Phasellus nec interdum dui",
+      "Mengembangkan dan memelihara modul Omnichannel (PHP/CodeIgniter), mengintegrasikan 6 platform komunikasi (Telephony, Email, iSense, iCare, XOS, iSupport).",
+      "Mengimplementasikan frontend interaktif (JavaScript, jQuery, AJAX) untuk meningkatkan fungsionalitas dan menunjang pengalaman pengguna",
+      "Mengoptimalkan query MySQL dan PostgreSQL untuk memastikan efisiensi sistem dalam menangani volume data besar.",
+      "Mengelola proses remote development dan deployment (WinSCP/SSH), menjaga stabilitas alur kerja tim dan keamanan server.",
+    ],
+  },
+  {
+    title: "PT Andal Rancang Multisolusi",
+    position: "Backend Web Developer",
+    imgSrc: imgArm,
+    descriptions: [
+      "Merancang dan mengembangkan lebih dari 50 endpoint RESTful API (Express.js) untuk sistem crowdfunding koperasi berbasis Hyperledger Besu.",
+      "Mengintegrasikan backend Express.js dengan smart contract Solidity (Hardhat), memfasilitasi alur transaksi yang aman dan konsisten.",
+      "Berkoordinasi dengan tim frontend dan blockchain engineer untuk memastikan konsistensi data antar-komponen sistem.",
+    ],
+  },
+  {
+    title: "PT Sebangku Jaya Abadi (NaZMa Office)",
+    position: "Fullstack Web Developer",
+    imgSrc: imgNazma,
+    descriptions: [
+      "Mengembangkan website pelatihan NaZMaLogy (Laravel + Tailwind CSS) dari awal hingga peluncuran untuk mendukung program digitalisasi UMKM.",
+      "Melakukan pengujian performa (Grafana K6) dan deployment VPS, memastikan sistem tervalidasi stabil menangani 400 virtual user secara simultan.",
     ],
   },
   {
     title: "Formadiksi Polinema",
-    position: "Pengurus Muda Divisi Keagamaan",
-    imgSrc: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=600&fit=crop",
-    descriptions: ["Ini adalah deskripsi untuk Pengurus Muda Divisi Keagamaan.", "Bertanggung jawab atas kegiatan keagamaan organisasi.", "Mengelola acara dan pertemuan rutin."],
-  },
-  {
-    title: "Pengalaman Ketiga",
-    position: "Posisi di Pengalaman Ketiga",
-    imgSrc: "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?w=400&h=600&fit=crop",
-    descriptions: ["Deskripsi untuk pengalaman ketiga.", "Poin kedua untuk pengalaman ketiga.", "Poin ketiga untuk pengalaman ketiga."],
-  },
-  {
-    title: "Pengalaman Keempat",
-    position: "Posisi di Pengalaman Keempat",
-    imgSrc: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=600&fit=crop",
-    descriptions: ["Deskripsi untuk pengalaman keempat.", "Poin kedua untuk pengalaman keempat."],
-  },
-  {
-    title: "Pengalaman Kelima",
-    position: "Posisi di Pengalaman Kelima",
-    imgSrc: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=400&h=600&fit=crop",
-    descriptions: ["Deskripsi untuk pengalaman kelima.", "Poin kedua untuk pengalaman kelima."],
+    position: "Staf Ahli Divisi Kominfo | Pengurus Muda Divisi Keagamaan",
+    imgSrc: imgFmd,
+    descriptions: [
+      "Berkomunikasi dan bekerja sama dengan tim untuk pencitraan organisasi. Berhasil meningkatkan pengikut media sosial hingga 15%.",
+      "Terpilih menjadi Kandidat Ketua Umum Formadiksi Polinema Periode 2023/2024.",
+      "Bertindak sebagai Koordinator Lapangan dan Ketua Pelaksana untuk 4+ program kerja dan agenda internal organisasi.",
+    ],
   },
 ];

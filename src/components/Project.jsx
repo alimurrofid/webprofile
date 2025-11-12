@@ -40,7 +40,19 @@ export const Project = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence>
             {projectData.slice(0, visibleProjects).map((project, index) => (
-              <motion.a href={project.link} key={index} layout initial="hidden" animate="hidden" whileHover="visible" exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }} className="relative block">
+              <motion.a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={index}
+                layout
+                initial="hidden"
+                animate="hidden"
+                whileHover="visible"
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="relative block"
+              >
                 <motion.div
                   className="w-full"
                   variants={{

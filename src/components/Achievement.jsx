@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { achievementData } from "../data/achievementData";
-import rofidLogo from "../assets/images/rofidlogo.png";
+import rofidLogo from "../assets/images/rofidlogo.webp";
 import linkIcon from "../assets/images/link.svg";
 
 export const Achievement = () => {
@@ -27,6 +27,8 @@ export const Achievement = () => {
             {achievementData.slice(0, visibleAchievements).map((achievement, index) => (
               <motion.a
                 href={achievement.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 key={index}
                 layout
                 initial={{ opacity: 0, y: 20 }}
