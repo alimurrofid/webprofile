@@ -61,7 +61,7 @@ export const Experience = () => {
           <div className="w-full mb-8 text-center md:w-1/3 sm:mb-10 md:mb-0 md:text-left">
             <p className="text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-4xl lg:text-5xl">Experience</p>
             <p className="mt-3 text-base font-normal leading-relaxed text-justify text-white sm:text-lg md:leading-loose sm:mt-4">
-              I am an Informatics Student at the State Polytechnic of Malang, where creativity, innovation and adaptability are my characteristics.
+              My approach to development is driven by creativity, innovation, and adaptability, as showcased throughout my professional roles.
             </p>
           </div>
 
