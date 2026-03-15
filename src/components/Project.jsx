@@ -45,6 +45,13 @@ const ProjectCard = memo(({ project, variants }) => (
           <img loading="lazy" className="w-full h-auto" src={project.imgSrc} alt={project.title} />
         </div>
         <p className="pt-2 text-xl font-bold leading-relaxed">{project.title}</p>
+        <div className="flex flex-wrap gap-2 mt-2 mb-3">
+          {project.techStack && project.techStack.map((tech, i) => (
+            <span key={i} className="px-2.5 py-1 text-xs font-medium bg-white/10 text-gray-200 rounded-md border border-white/20">
+              {tech}
+            </span>
+          ))}
+        </div>
         <m.p variants={variants} className="text-base font-normal text-gray-300">
           {project.description}
         </m.p>
