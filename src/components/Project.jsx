@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, memo } from "react";
+import { m, LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
 import { projectData } from "../data/projectData";
 
 const descriptionVariants = {
@@ -18,6 +18,40 @@ const descriptionVariants = {
     transition: { duration: 0.2, delay: 0.1 },
   },
 };
+
+const ProjectCard = memo(({ project, variants }) => (
+  <m.a
+    href={project.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    layout
+    initial="hidden"
+    animate="hidden"
+    whileHover="visible"
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.3 }}
+    className="relative block"
+  >
+    <m.div
+      className="w-full"
+      variants={{
+        hidden: { scale: 1 },
+        visible: { scale: 1.05 },
+      }}
+      transition={{ scale: { duration: 0.2 } }}
+    >
+      <div className="w-full text-white">
+        <div className="object-cover overflow-hidden rounded-lg">
+          <img loading="lazy" className="w-full h-auto" src={project.imgSrc} alt={project.title} />
+        </div>
+        <p className="pt-2 text-xl font-bold leading-relaxed">{project.title}</p>
+        <m.p variants={variants} className="text-base font-normal text-gray-300">
+          {project.description}
+        </m.p>
+      </div>
+    </m.div>
+  </m.a>
+));
 
 export const Project = () => {
   const [visibleProjects, setVisibleProjects] = useState(3);
@@ -38,43 +72,14 @@ export const Project = () => {
       </div>
       <div className="container mt-16">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence>
-            {projectData.slice(0, visibleProjects).map((project, index) => (
-              <motion.a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={index}
-                layout
-                initial="hidden"
-                animate="hidden"
-                whileHover="visible"
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="relative block"
-              >
-                <motion.div
-                  className="w-full"
-                  variants={{
-                    hidden: { scale: 1 },
-                    visible: { scale: 1.05 },
-                  }}
-                  transition={{ scale: { duration: 0.2 } }}
-                >
-                  <div className="w-full text-white">
-                    <div className="object-cover overflow-hidden rounded-lg">
-                      <img className="w-full h-auto" src={project.imgSrc} alt={project.title} />
-                    </div>
-                    <p className="pt-2 text-xl font-bold leading-relaxed">{project.title}</p>
-                    <motion.p variants={descriptionVariants} className="text-base font-normal text-gray-300">
-                      {project.description}
-                    </motion.p>
-                  </div>
-                </motion.div>
-              </motion.a>
-            ))}
-          </AnimatePresence>
-        </div>
+          <LazyMotion features={domAnimation}>
+            <AnimatePresence>
+              {projectData.slice(0, visibleProjects).map((project, index) => (
+                <ProjectCard key={index} project={project} variants={descriptionVariants} />
+              ))}
+            </AnimatePresence>
+        </LazyMotion>
+      </div>
       </div>
       <div className="flex justify-center mt-12">
         {visibleProjects < projectData.length ? (

@@ -7,7 +7,7 @@ export const Sayhi = () => {
         <div className="relative flex flex-col items-center justify-between w-full h-auto p-8 overflow-hidden bg-card rounded-xl md:flex-row md:p-12">
           <div className="absolute bg-purple-800 blur-[120px] w-full md:w-[28rem] h-[28rem] left-0 md:left-16 -top-56"></div>
           <div className="flex items-center justify-center w-full mb-8 md:w-1/2 md:mb-0">
-            <img className="z-10 w-48 h-48 md:w-72 md:h-72" src={rofidLogo} alt="Rofid Logo" />
+            <img loading="lazy" className="z-10 w-48 h-48 md:w-72 md:h-72" src={rofidLogo} alt="Rofid Logo" />
           </div>
           <div className="z-10 w-full space-y-4 text-center md:w-1/2 md:text-left">
             <p className="text-4xl font-medium text-white md:text-5xl">Get In Touch</p>

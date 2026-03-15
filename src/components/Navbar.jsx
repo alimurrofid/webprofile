@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MenuItems } from "./MenuItems";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
 import rofidLogo from "../assets/images/rofidlogo.webp";
 import menuIcon from "../assets/images/menu.svg";
 
@@ -18,8 +18,9 @@ export const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 z-50 flex justify-center w-full p-4">
       <div className="relative w-full max-w-sm md:w-auto md:max-w-none">
-        <motion.div
-          animate={isMenuOpen ? "open" : "closed"}
+        <LazyMotion features={domAnimation}>
+          <m.div
+            animate={isMenuOpen ? "open" : "closed"}
           variants={{
             open: { height: "auto" },
             closed: { height: "60px" },
@@ -43,14 +44,15 @@ export const Navbar = () => {
 
           <AnimatePresence>
             {isMenuOpen && (
-              <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2, delay: 0.1 }} className="md:hidden">
+              <m.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2, delay: 0.1 }} className="md:hidden">
                 <div className="p-6 pt-4 text-center">
                   <MenuItems isMobile={true} closeMenu={closeMenu} />
                 </div>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
-        </motion.div>
+        </m.div>
+        </LazyMotion>
       </div>
     </nav>
   );

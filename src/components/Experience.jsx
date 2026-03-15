@@ -3,11 +3,11 @@ import { experiences } from "../data/experienceData";
 
 const ExperienceCard = ({ title, position, imgSrc, descriptions }) => (
   <div className="w-full h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[60vh] overflow-hidden rounded-2xl relative group/detail shadow-lg">
-    <img className="object-cover w-full h-full" src={imgSrc} alt={title} />
+    <img loading="lazy" className="object-cover w-full h-full" src={imgSrc} alt={title} />
 
     <div className="bg-gradient-to-t from-purple-700 to-purple-700/30 w-full h-full absolute top-0 left-0 translate-y-[65%] group-hover/detail:translate-y-0 transition-transform duration-300 ease-in-out p-3 sm:p-4 md:p-5 lg:p-6 flex flex-col justify-between">
       <div className="flex-col justify-start flex-1 hidden pt-1 overflow-y-auto transition-opacity duration-300 delay-100 opacity-0 group-hover/detail:opacity-100 group-hover/detail:flex sm:pt-2">
-        <img className="mx-auto mb-2 w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 sm:mb-3 md:mb-3" src="https://api.iconify.design/mdi/chevron-down.svg?color=white" alt="down arrow" />
+        <img loading="lazy" className="mx-auto mb-2 w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 sm:mb-3 md:mb-3" src="https://api.iconify.design/mdi/chevron-down.svg?color=white" alt="down arrow" />
         <ul className="mx-5 space-y-1.5 text-base leading-relaxed text-justify text-white list-disc sm:mx-6 sm:text-lg sm:space-y-2 sm:leading-relaxed md:mx-7 md:text-xl md:space-y-2 lg:mx-8 lg:text-base lg:space-y-2">
           {descriptions.map((desc, index) => (
             <li key={index}>{desc}</li>
@@ -22,6 +22,7 @@ const ExperienceCard = ({ title, position, imgSrc, descriptions }) => (
         </div>
 
         <img
+          loading="lazy"
           className="mx-auto mt-4 transition-opacity duration-300 transform rotate-180 w-7 h-7 sm:w-8 sm:h-8 sm:mt-5 md:w-9 md:h-9 md:mt-6 lg:w-8 lg:h-8 lg:mt-6 xl:w-9 xl:h-9 xl:mt-7 group-hover/detail:opacity-0 group-hover/detail:hidden"
           src="https://api.iconify.design/mdi/chevron-down.svg?color=white"
           alt="up arrow"

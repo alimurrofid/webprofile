@@ -1,8 +1,38 @@
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, memo } from "react";
+import { m, LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
 import { achievementData } from "../data/achievementData";
 import rofidLogo from "../assets/images/rofidlogo.webp";
 import linkIcon from "../assets/images/link.svg";
+
+const AchievementCard = memo(({ achievement }) => (
+  <m.a
+    href={achievement.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    layout
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    whileHover={{ scale: 1.05 }}
+    transition={{
+      duration: 0.3,
+      scale: { duration: 0.2 },
+    }}
+    className="relative w-full h-56 overflow-hidden bg-card rounded-xl"
+  >
+    <div className="flex justify-between">
+      <img loading="lazy" className="w-12 h-12 m-4" src={rofidLogo} alt="Logo Rofid" />
+      <img loading="lazy" className="z-10 m-6" src={linkIcon} alt="Tautan eksternal" />
+    </div>
+    <div className="relative z-10 mx-6 mt-2 text-white">
+      <p className="text-2xl font-semibold line-clamp-2">{achievement.title}</p>
+      <div className="absolute w-full -bottom-12">
+        <p>{achievement.description}</p>
+      </div>
+    </div>
+    <div className="bg-purple-800 w-80 h-80 rounded-full blur-[80px] -right-16 -top-24 absolute"></div>
+  </m.a>
+));
 
 export const Achievement = () => {
   const [visibleAchievements, setVisibleAchievements] = useState(3);
@@ -23,39 +53,15 @@ export const Achievement = () => {
       </div>
       <div className="container mt-16">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence>
-            {achievementData.slice(0, visibleAchievements).map((achievement, index) => (
-              <motion.a
-                href={achievement.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={index}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                whileHover={{ scale: 1.05 }}
-                transition={{
-                  duration: 0.3,
-                  scale: { duration: 0.2 },
-                }}
-                className="relative w-full h-56 overflow-hidden bg-card rounded-xl"
-              >
-                <div className="flex justify-between">
-                  <img className="w-12 h-12 m-4" src={rofidLogo} alt="Logo Rofid" />
-                  <img className="z-10 m-6" src={linkIcon} alt="Tautan eksternal" />
-                </div>
-                <div className="relative z-10 mx-6 mt-2 text-white">
-                  <p className="text-2xl font-semibold line-clamp-2">{achievement.title}</p>
-                  <div className="absolute w-full -bottom-12">
-                    <p>{achievement.description}</p>
-                  </div>
-                </div>
-                <div className="bg-purple-800 w-80 h-80 rounded-full blur-[80px] -right-16 -top-24 absolute"></div>
-              </motion.a>
-            ))}
-          </AnimatePresence>
+          <LazyMotion features={domAnimation}>
+            <AnimatePresence>
+              {achievementData.slice(0, visibleAchievements).map((achievement, index) => (
+                <AchievementCard key={index} achievement={achievement} />
+              ))}
+            </AnimatePresence>
+          </LazyMotion>
         </div>
+
       </div>
       <div className="flex justify-center mt-12">
         {visibleAchievements < achievementData.length ? (

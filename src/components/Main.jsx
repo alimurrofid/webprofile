@@ -24,22 +24,22 @@ export const Main = () => {
             <div className="w-full mt-12 md:w-auto md:mt-0 md:pl-8">
               <ul className="flex flex-row items-center justify-center space-x-8 md:flex-col md:space-x-0 md:space-y-8">
                 <li>
-                  <a className="transition-opacity hover:opacity-50 duration-250" href="https://github.com/alimurrofid" target="_blank" rel="noopener noreferrer">
+                  <a aria-label="GitHub Profile" className="transition-opacity hover:opacity-50 duration-250" href="https://github.com/alimurrofid" target="_blank" rel="noopener noreferrer">
                     <img src={githubIcon} alt="github" />
                   </a>
                 </li>
                 <li>
-                  <a className="transition-opacity hover:opacity-50 duration-250" href="https://instagram.com/alimurrofid" target="_blank" rel="noopener noreferrer">
+                  <a aria-label="Instagram Profile" className="transition-opacity hover:opacity-50 duration-250" href="https://instagram.com/alimurrofid" target="_blank" rel="noopener noreferrer">
                     <img src={instagramIcon} alt="instagram" />
                   </a>
                 </li>
                 <li>
-                  <a className="transition-opacity hover:opacity-50 duration-250" href="https://twitter.com/alimurrofid" target="_blank" rel="noopener noreferrer">
+                  <a aria-label="Twitter Profile" className="transition-opacity hover:opacity-50 duration-250" href="https://twitter.com/alimurrofid" target="_blank" rel="noopener noreferrer">
                     <img src={twitterIcon} alt="twitter" />
                   </a>
                 </li>
                 <li>
-                  <a className="transition-opacity hover:opacity-50 duration-250" href="https://linkedin.com/in/alimurrofid" target="_blank" rel="noopener noreferrer">
+                  <a aria-label="LinkedIn Profile" className="transition-opacity hover:opacity-50 duration-250" href="https://linkedin.com/in/alimurrofid" target="_blank" rel="noopener noreferrer">
                     <img src={linkedinIcon} alt="linkedin" />
                   </a>
                 </li>

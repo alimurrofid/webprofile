@@ -8,7 +8,7 @@ export const About = () => {
           <div className="flex justify-center w-full mb-12 md:w-5/12 md:justify-start md:mb-0">
             <div className="relative w-4/5 sm:w-3/5 md:w-full">
               <div className="absolute w-full h-full transition-opacity duration-700 ease-in-out bg-purple-600/70 rounded-2xl hover:opacity-0"></div>
-              <img className="w-full h-auto rounded-2xl" src={fotoProfile} alt="Foto Profile Rofid" />
+              <img loading="lazy" className="w-full h-auto rounded-2xl" src={fotoProfile} alt="Foto Profile Rofid" />
             </div>
           </div>
           <div className="w-full space-y-4 text-center md:w-7/12 md:text-left">
