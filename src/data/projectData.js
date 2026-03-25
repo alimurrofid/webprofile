@@ -49,7 +49,7 @@ export const projectData = [
     imgSrc: wadesImg,
     link: "https://github.com/alimurrofid/web-wades",
     description: "A website for handling official village letter requests, featuring integration with a WhatsApp bot.",
-    techStack: ["Laravel", "Express.js", "Bootstrap", "MySQL"]
+    techStack: ["Laravel", "Express.js", "Tailwind CSS", "MySQL"]
   },
   {
     title: "CrowdEquiChain",

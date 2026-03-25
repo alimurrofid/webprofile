@@ -15,7 +15,7 @@ export const About = () => {
             <p className="text-4xl font-semibold leading-tight text-white md:text-5xl">About</p>
             <p className="text-lg font-normal leading-loose text-justify text-white">I am a Web Developer dedicated to creativity, innovation, and adaptability. My primary focus is full-stack development, and I am driven to continually grow as a competent developer.</p>
             <p className="text-lg font-normal leading-loose text-justify text-white">
-              With over a year of experience, I am committed to crafting functional and engaging user experiences. I am always ready to take on new challenges and continuously expand my knowledge and skills in this dynamic field.
+              With over 2 years of experience, I am committed to crafting functional and engaging user experiences. I am always ready to take on new challenges and continuously expand my knowledge and skills in this dynamic field.
             </p>
           </div>
         </div>
