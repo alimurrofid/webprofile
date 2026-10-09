@@ -1,18 +1,23 @@
-name: 🚀 Deploy React Webprofile to VPS
+name: 🚀 Deploy to GitHub Pages
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    permissions:
-      contents: read
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,57 +28,27 @@ jobs:
           node-version: "22"
           cache: "npm"
 
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.7.0
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          path: ./dist
 
-      - name: Deploy to VPS (Secure)
-        env:
-          USER: ${{ secrets.SERVER_USER }}
-          HOST: ${{ secrets.SERVER_HOST }}
-          PORT: ${{ secrets.SERVER_PORT || '22' }}
-          PROJECT_PATH: ${{ secrets.PROJECT_PATH }}
-        run: |
-          set -e
-          echo "🚀 Starting secure deployment..."
-
-          ssh -p $PORT -o StrictHostKeyChecking=accept-new $USER@$HOST "
-            set -e
-            echo '🔒 Deployment started on remote server.'
-
-            # Load NVM (silent)
-            export NVM_DIR=\"\$HOME/.nvm\"
-            [ -s \"\$NVM_DIR/nvm.sh\" ] && . \"\$NVM_DIR/nvm.sh\" >/dev/null 2>&1 || true
-            nvm use 22 >/dev/null 2>&1 || true
-
-            # Verify Node & NPM
-            if command -v node >/dev/null 2>&1 && command -v npm >/dev/null 2>&1; then
-              echo '✅ Node & NPM detected.'
-            else
-              echo '❌ Node/NPM not found — aborting.'
-              exit 1
-            fi
-
-            # Navigate & sync repo
-            cd $PROJECT_PATH
-            git fetch origin main --quiet
-            git reset --hard origin/main --quiet
-
-            # Install & build
-            echo '📦 Installing dependencies...'
-            npm ci --no-audit --no-fund >/dev/null 2>&1
-
-            echo '🏗️ Building project...'
-            npm run build >/dev/null 2>&1
-
-            # Restart Nginx
-            echo '♻️ Restarting web service...'
-            sudo systemctl restart nginx || echo '⚠️ Restart failed (manual check needed).'
-
-            echo '✅ Deployment finished successfully at' \$(date)
-          "
-
-      - name: Confirm deployment
-        if: success()
-        run: echo "✅ Deployment complete. Build and service restarted successfully."
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
